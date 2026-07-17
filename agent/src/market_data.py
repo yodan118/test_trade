@@ -26,6 +26,9 @@ _SOURCE_PATTERNS = [
     # India: NSE (RELIANCE.NS) / BSE (500325.BO). Tickers may carry '&' and '-'
     # (e.g. M&M.NS, BAJAJ-AUTO.NS). Served by Yahoo's public chart endpoint.
     (re.compile(r"^[A-Z0-9&.\-]+\.(NS|BO)$", re.I), "yahoo"),
+    # Korea: KOSPI (005930.KS) / KOSDAQ (247540.KQ), 6-digit codes. Served by
+    # pykrx (KRX public data, no auth); registry falls back to Yahoo/yfinance.
+    (re.compile(r"^\d{6}\.(KS|KQ)$", re.I), "pykrx"),
     (re.compile(r"^[A-Z]+-USDT$", re.I), "okx"),
     (re.compile(r"^[A-Z]+/USDT$", re.I), "ccxt"),
 ]
